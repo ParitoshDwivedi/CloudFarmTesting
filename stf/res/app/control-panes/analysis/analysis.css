@@ -1,0 +1,20 @@
+.stf-analysis .table.table-infocard thead > tr > th,
+.stf-analysis .table.table-infocard tbody > tr > th,
+.stf-analysis .table.table-infocard tfoot > tr > th,
+.stf-analysis .table.table-infocard thead > tr > td,
+.stf-analysis .table.table-infocard tbody > tr > td,
+.stf-analysis .table.table-infocard tfoot > tr > td {
+  border-top: 0;
+}
+
+.stf-analysis .table-infocard tbody > tr > td:first-child {
+  text-align: right;
+  margin-right: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.stf-analysis .progress {
+  margin-bottom: 0;
+  height: 15px;
+}

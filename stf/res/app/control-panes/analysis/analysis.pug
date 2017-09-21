@@ -1,0 +1,67 @@
+doctype html
+html(ng-app='stf.analysis')
+  head
+    meta(charset='utf-8')
+    title AngularJS Plunker
+    script.
+      document.write('<base href="' + document.location + '" />');
+
+    link(rel='stylesheet', href='static/app/control-panes/analysis/nv.d3.min.css')
+    script(src='static/bower_components/angular/angular.js')
+    script(src='static/bower_components/d3/d3.js', charset='utf-8')
+    script(src='static/bower_components/nvd3/build/nv.d3.js')
+    script(src='static/bower_components/angular-nvd3/dist/angular-nvd3.js')
+    script(src='static/res/app/control-panes/analysis/analysis-controller.js')
+ 
+  body
+    .row.stf-analysis.selectable(ng-controller='AnalysisCtrl', angular-packery='{draggable: true, draggableHandle: ".heading i"}')
+      .col-md-6.packery-item
+        .widget-container.fluid-height
+          .heading
+            stacked-icon(icon='fa-line-chart', color='color-blue')
+            span(translate='translate') CPU Usage
+            .pull-right
+          .widget-content.padded-small
+            table.table-condensed.table-hover.table-infocard
+              tbody
+                tr
+                  td(translate='translate') Utilization (%):
+                  td {{device.cpu.cpu_consumed}}
+      .col-md-6.packery-item
+        .widget-container.fluid-height
+          .heading
+            stacked-icon(icon='fa-line-chart', color='color-orange')
+            span(translate='translate') Memory Usage (RAM)
+            .pull-right
+          .widget-content.padded-small
+            table.table-condensed.table-hover.table-infocard
+              tbody
+                tr
+                  td(translate='translate') Shared (Kb):
+                  td {{device.cpu.mem_shared}}
+                tr
+                  td(translate='translate') Unique (Kb):
+                  td {{device.cpu.mem_standalone}}
+    .row.stf-analysis.selectable(angular-packery='{draggable: true, draggableHandle: ".heading i"}')
+      .col-md-6.packery-item
+        .widget-container.fluid-height
+          .heading
+            stacked-icon(icon='fa-line-chart', color='color-blue')
+            span(translate='translate') Monitor (CPU)
+            .pull-right
+          .widget-content.padded-small
+            table.table-condensed.table-hover.table-infocard
+              div(ng-controller='AnalysisCtrl')
+                button(ng-click='run=!run') Start / Stop
+                nvd3(options='options', data='data')
+      .col-md-6.packery-item
+        .widget-container.fluid-height
+          .heading
+            stacked-icon(icon='fa-line-chart', color='color-orange')
+            span(translate='translate') Monitor (Memory)
+            .pull-right
+          .widget-content.padded-small
+            table.table-condensed.table-hover.table-infocard
+              div(ng-controller='MemoryCtrl')
+                button(ng-click='run=!run') Start / Stop
+                nvd3(options='options', data='data')
